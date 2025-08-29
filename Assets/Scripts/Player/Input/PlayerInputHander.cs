@@ -17,6 +17,12 @@ public class PlayerInputHander : MonoBehaviour
 
     private float jumpInputStartTime;
 
+    //引用背包，后面视情况修改。
+    [SerializeField]
+    private GameObject inventory;
+
+    public static event System.Action OnInteractPressed;
+
     private void Update()
     {
         CheckJumpInputHoldTime();
@@ -51,11 +57,17 @@ public class PlayerInputHander : MonoBehaviour
 
     public void onInteractInput(InputAction.CallbackContext context)
     {
-       
+        if (context.performed)
+        {
+            OnInteractPressed?.Invoke();
+        }
     }
 
     public void onOpenInventory(InputAction.CallbackContext context)
     {
-
+        if(context.started)
+        {
+            inventory.SetActive(!inventory.activeSelf);
+        }
     }
 }

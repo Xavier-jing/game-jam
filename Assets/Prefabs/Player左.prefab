@@ -182,6 +182,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9273f117-ad78-457d-a7cb-70c063dae144
     m_ActionName: GamePlay/Switch[/Keyboard/tab]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bdfbf480-d1ef-4e1e-8739-42d017969a25
+    m_ActionName: GamePlay/OpenInventory[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GamePlay
@@ -201,6 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInput: {fileID: 5321517667432372324}
   inputHoldTime: 0.2
+  inventory: {fileID: 0}
 --- !u!95 &1870823314812125702
 Animator:
   serializedVersion: 5
