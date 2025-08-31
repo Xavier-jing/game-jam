@@ -1,23 +1,47 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class Slot : MonoBehaviour
 {
-    public Image slotImage;           // 格子里的图片
-    public ItemData item;             // 当前格子对应物品
+    public Image slotImage;
+    public ItemData item;
+    private Button button;
+    [SerializeField] 
+    private InventoryManager inventoryManager;
+
+    private void Awake()
+    {
+        button = GetComponent<Button>();
+        if (button != null)
+        {
+            button.onClick.AddListener(OnClick);
+        }
+    }
 
     public void SetItem(ItemData newItem)
     {
         item = newItem;
         slotImage.sprite = item != null ? item.itemImage : null;
-        slotImage.enabled = item != null;  // 没有物品隐藏图片
+        slotImage.enabled = item != null;
+    }
+
+    public void ClearSlot()
+    {
+        item = null;
+        slotImage.sprite = null;
+        slotImage.enabled = false;
     }
 
     public void OnClick()
     {
         if (item != null)
+        {
             InventoryManager.ShowItemInfo(item.itemInfo);
+            if (inventoryManager != null)
+            {
+                Debug.Log("选中槽位: " + item.itemName);
+                inventoryManager.SelectSlot(this);
+            }
+        }
     }
 }
-

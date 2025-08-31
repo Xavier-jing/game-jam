@@ -15,6 +15,12 @@ public class PlayerInputHander : MonoBehaviour
     [SerializeField]
     private float inputHoldTime = 0.2f;
 
+    [SerializeField] 
+    private InventoryManager inventoryManager;
+
+    [SerializeField] 
+    private Transform dropOffset;
+
     private float jumpInputStartTime;
 
     //引用背包，后面视情况修改。
@@ -57,10 +63,10 @@ public class PlayerInputHander : MonoBehaviour
 
     public void onInteractInput(InputAction.CallbackContext context)
     {
-        if (context.performed)
-        {
-            OnInteractPressed?.Invoke();
-        }
+        if (!context.performed) return;
+
+        OnInteractPressed?.Invoke();
+
     }
 
     public void onOpenInventory(InputAction.CallbackContext context)
