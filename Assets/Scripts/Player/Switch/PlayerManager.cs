@@ -4,11 +4,15 @@ public class PlayerManager : MonoBehaviour
 {
     public Player[] players;
     private int currentIndex = 0;
+    public int CurrentIndex => currentIndex;
 
     private void Start()
     {
-        players[0].SetControlled(true);   
-        players[1].SetControlled(false);
+        if (players.Length > 0)
+            players[0].SetControlled(true);
+
+        for (int i = 1; i < players.Length; i++)
+            players[i].SetControlled(false);
 
     }
 

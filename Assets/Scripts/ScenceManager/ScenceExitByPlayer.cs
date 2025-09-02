@@ -9,25 +9,30 @@ public class ScenceExitByPlayer : MonoBehaviour
     public string targetSceneName;
 
     [Header("Ã· æUI")]
-    public GameObject hintUI; 
+    public GameObject hintUI;
 
-    private bool playerInTrigger = false;
+    public PlayerManager playerManager;
+
+    private GameObject playerInTrigger = null;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            playerInTrigger = true;
-            if (hintUI != null)
-                hintUI.SetActive(true);
+            playerInTrigger = other.gameObject;
+            if (playerInTrigger == playerManager.players[playerManager.CurrentIndex].gameObject)
+            {
+                if (hintUI != null)
+                    hintUI.SetActive(true);
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && other.gameObject == playerInTrigger)
         {
-            playerInTrigger = false;
+            playerInTrigger = other.gameObject;
             if (hintUI != null)
                 hintUI.SetActive(false);
         }
@@ -35,7 +40,7 @@ public class ScenceExitByPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (playerInTrigger && Keyboard.current.eKey.wasPressedThisFrame)
+        if (playerInTrigger == playerManager.players[playerManager.CurrentIndex].gameObject && Keyboard.current.eKey.wasPressedThisFrame)
         {
             StartCoroutine(SceneLoader.Instance.TransitionCoroutine(targetSceneName));
         }

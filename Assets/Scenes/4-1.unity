@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 56925273}
   - component: {fileID: 56925272}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 56925271}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e505aaffe9bca794884853e94fcb4ffd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -291,12 +291,24 @@ PrefabInstance:
       value: "Player\u5DE6"
       objectReference: {fileID: 0}
     - target: {fileID: 3992222702326038335, guid: 981609e3e843b514390f7ad830769602, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.17116961
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992222702326038335, guid: 981609e3e843b514390f7ad830769602, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.17116961
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992222702326038335, guid: 981609e3e843b514390f7ad830769602, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.17116961
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992222702326038335, guid: 981609e3e843b514390f7ad830769602, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -61.98
+      value: -61.9362
       objectReference: {fileID: 0}
     - target: {fileID: 3992222702326038335, guid: 981609e3e843b514390f7ad830769602, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.05
+      value: -9.9881
       objectReference: {fileID: 0}
     - target: {fileID: 3992222702326038335, guid: 981609e3e843b514390f7ad830769602, type: 3}
       propertyPath: m_LocalPosition.z
@@ -554,6 +566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSceneName: 4-2
   hintUI: {fileID: 184954920}
+  playerManager: {fileID: 1894874604}
 --- !u!4 &276210790
 Transform:
   m_ObjectHideFlags: 0
@@ -896,7 +909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 738833613}
   - component: {fileID: 738833612}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1098,6 +1111,10 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 604959761}
+    - target: {fileID: 2012520552985166591, guid: f362d911c9dc6a4469e9be95dc7b8013, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3016294878317876977, guid: f362d911c9dc6a4469e9be95dc7b8013, type: 3}
       propertyPath: m_Name
       value: "player\u53F3"
@@ -1820,7 +1837,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1341089298}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 92dff0f5f4af909458ca0eaa1ec78094, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1934,7 +1951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1485103402}
   - component: {fileID: 1485103401}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "left\u4E0B"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2195,7 +2212,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1660854362}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 92dff0f5f4af909458ca0eaa1ec78094, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2417,7 +2434,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1830472889}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 92dff0f5f4af909458ca0eaa1ec78094, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2477,6 +2494,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14cfe4db4459b2b40883d9163c7d0719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1894874604 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6001025568524879320, guid: 84f02a6407a784348ba2a25ffcede810, type: 3}
+  m_PrefabInstance: {fileID: 436611256}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13dabe33b8e01d24f87b1f0cbedc4db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1913353766
@@ -2597,7 +2625,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1957364818}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 92dff0f5f4af909458ca0eaa1ec78094, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
