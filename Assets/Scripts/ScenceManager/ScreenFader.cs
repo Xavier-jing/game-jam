@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class ScreenFader : MonoBehaviour
 {
     public static ScreenFader Instance { get; private set; }
 
     [Header("全屏黑色遮罩")]
-    public CanvasGroup faderCanvasGroup;
+    public Image faderImage;
 
     [Header("淡入淡出时间")]
     public float faderDuration = 1f;
@@ -20,12 +21,14 @@ public class ScreenFader : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            if (faderCanvasGroup == null)
+            if (faderImage == null)
                 Debug.LogError("ScreenFader: CanvasGroup 未绑定！");
-            if (faderCanvasGroup != null)
+            if (faderImage != null)
             {
-                faderCanvasGroup.alpha = 0f;                // 初始透明
-                faderCanvasGroup.gameObject.SetActive(false); // 一开始隐藏
+                Color c = faderImage.color;
+                c.a = 0f;
+                faderImage.color = c;                // 初始透明
+                faderImage.gameObject.SetActive(false); // 一开始隐藏
             }
         }
         else
@@ -36,19 +39,19 @@ public class ScreenFader : MonoBehaviour
 
     public IEnumerator FadeIn()
     {
-        if (faderCanvasGroup != null)
+        if (faderImage != null)
         {
-            faderCanvasGroup.gameObject.SetActive(false); // Fade完成隐藏
-            yield return faderCanvasGroup.DOFade(0f, faderDuration).WaitForCompletion();
+            yield return faderImage.DOFade(0f, faderDuration).WaitForCompletion();
+            faderImage.gameObject.SetActive(false);
         }
     }
 
     public IEnumerator FadeOut()
     {
-        if (faderCanvasGroup != null)
+        if (faderImage != null)
         {
-            faderCanvasGroup.gameObject.SetActive(true); // 切场景前显示
-            yield return faderCanvasGroup.DOFade(1f, faderDuration).WaitForCompletion();
+            faderImage.gameObject.SetActive(true); // 切场景前显示
+            yield return faderImage.DOFade(1f, faderDuration).WaitForCompletion();
         }
     }
 
@@ -58,5 +61,4 @@ public class ScreenFader : MonoBehaviour
         yield return SceneManager.LoadSceneAsync(sceneName);
         yield return FadeIn();
     }
-
 }

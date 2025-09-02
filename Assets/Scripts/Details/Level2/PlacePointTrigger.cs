@@ -42,8 +42,9 @@ public class PlacePointTrigger : MonoBehaviour
         }
     }
 
-    private void HandleInteract()
+    private void HandleInteract(PlayerInputHander handler)
     {
+        if(!playerInside) return;
         if (inv == null) return;
 
         if (playerInside && !itemPlaced)

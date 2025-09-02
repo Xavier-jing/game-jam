@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    [Header("全局背包数据")]
+    public InventoryData inventoryData;
+
+    [Header("UI")]
     public List<Slot> slots;
     public TextMeshProUGUI itemInfo;
 
-    [Header("丢弃相关")]
+    [Header("丢弃")]
     public GameObject itemPrefab;   
     public Transform dropPoint;
 
     private Slot selectedSlot;
 
+    private void Start()
+    {
+        RefreshUI(); 
+    }
+
     public void AddItemToInventory(ItemData item)
     {
-        foreach (var slot in slots)
+        if (!inventoryData.items.Contains(item))
         {
-            if (slot.item == null)
-            {
-                slot.SetItem(item);
-                return;
-            }
+            inventoryData.items.Add(item);
         }
+        RefreshUI();
     }
 
     public static void ShowItemInfo(string info)
@@ -54,6 +60,7 @@ public class InventoryManager : MonoBehaviour
         Debug.Log("[InventoryManager] DropSelectedItem: " + selectedSlot.item.itemName);
 
         var dropItem = selectedSlot.item;
+        inventoryData.items.Remove(dropItem);
         selectedSlot.ClearSlot();
 
         Vector3 pos = overridePos ?? (dropPoint != null ? dropPoint.position : transform.position);
@@ -67,5 +74,20 @@ public class InventoryManager : MonoBehaviour
 
         Debug.Log("[InventoryManager] 清空 selectedSlot");
         selectedSlot = null;
+
+        RefreshUI();
+    }
+
+    private void RefreshUI()
+    {
+        foreach (var slot in slots)
+        {
+            slot.ClearSlot();
+        }
+
+        for (int i = 0; i < inventoryData.items.Count && i < slots.Count; i++)
+        {
+            slots[i].SetItem(inventoryData.items[i]);
+        }
     }
 }

@@ -6,7 +6,8 @@ public class PlacePointEvent : MonoBehaviour
     public PlacePointTrigger placePoint;
 
     [Header("出现的新物品")]
-    public GameObject newItem;   // 一开始隐藏，放置正确后激活
+    public GameObject newItem;   // 预制体
+    public Transform newItemPosition; //生成位置
 
     [Header("拾取新物品后触发")]
     public Animator peopleAnimator;
@@ -16,21 +17,13 @@ public class PlacePointEvent : MonoBehaviour
     private bool newItemSpawned = false;
     private bool newItemPicked = false;
 
-    private void Start()
-    {
-        if (newItem != null) 
-            newItem.SetActive(false);
-        if (nextItemToAppear != null) 
-            nextItemToAppear.SetActive(false);
-    }
-
     private void Update()
     {
-        if (placePoint != null && placePoint.itemPlaced && !newItemSpawned)
+        if (placePoint != null && placePoint.itemPlaced == true && !newItemSpawned)
         {
             if (newItem != null)
             {
-                newItem.SetActive(true);
+                newItem = Instantiate(newItem,newItemPosition.position,newItemPosition.rotation);
                 newItemSpawned = true;
                 Debug.Log("新物品出现");
             }

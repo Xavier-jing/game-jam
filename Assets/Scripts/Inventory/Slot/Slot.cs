@@ -37,11 +37,7 @@ public class Slot : MonoBehaviour
         if (item != null)
         {
             InventoryManager.ShowItemInfo(item.itemInfo);
-            if (inventoryManager != null)
-            {
-                Debug.Log("—°÷–≤€Œª: " + item.itemName);
-                inventoryManager.SelectSlot(this);
-            }
+            inventoryManager.SelectSlot(this);
         }
     }
 }

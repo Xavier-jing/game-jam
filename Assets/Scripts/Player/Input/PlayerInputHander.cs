@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,11 +16,6 @@ public class PlayerInputHander : MonoBehaviour
     [SerializeField]
     private float inputHoldTime = 0.2f;
 
-    [SerializeField] 
-    private InventoryManager inventoryManager;
-
-    [SerializeField] 
-    private Transform dropOffset;
 
     private float jumpInputStartTime;
 
@@ -27,7 +23,7 @@ public class PlayerInputHander : MonoBehaviour
     [SerializeField]
     private GameObject inventory;
 
-    public static event System.Action OnInteractPressed;
+    public static event Action<PlayerInputHander> OnInteractPressed;
 
     private void Update()
     {
@@ -65,7 +61,7 @@ public class PlayerInputHander : MonoBehaviour
     {
         if (!context.performed) return;
 
-        OnInteractPressed?.Invoke();
+        OnInteractPressed?.Invoke(this);
 
     }
 

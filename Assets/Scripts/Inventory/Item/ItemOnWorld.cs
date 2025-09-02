@@ -6,12 +6,14 @@ public class ItemOnWorld : MonoBehaviour
     public InventoryManager inventoryManager;
 
     private SpriteRenderer sr;
-    private bool playerInRange = false;
+    //private bool playerInRange = false;
+    private PlayerInputHander currentPlayerInRange;
     public static int NearbyCount = 0;
 
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+        inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
     private void OnEnable()
@@ -42,16 +44,19 @@ public class ItemOnWorld : MonoBehaviour
             sr.sprite = item.itemImage;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-            playerInRange = true;
-    }
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Player"))
+    //        playerInRange = true;
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
             NearbyCount++;
+            currentPlayerInRange = collision.GetComponent<PlayerInputHander>();
+        } 
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -59,14 +64,19 @@ public class ItemOnWorld : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             NearbyCount = Mathf.Max(0, NearbyCount - 1);
-            playerInRange = false;
+           var handler = collision.GetComponent<PlayerInputHander>();
+            if (handler == currentPlayerInRange)
+            {
+                currentPlayerInRange = null;
+            }
         }
     }
 
-    private void TryPickup()
+    private void TryPickup(PlayerInputHander handler)
     {
-        if (!playerInRange) return;
-        if (inventoryManager == null) return;
+        //if (!playerInRange) return;
+        if (handler != currentPlayerInRange) return;
+        if (inventoryManager == null || item == null) return;
 
         inventoryManager.AddItemToInventory(item);
         Destroy(gameObject);

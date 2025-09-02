@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SceneExit : MonoBehaviour
 {
-    [Tooltip("需要切换的场景名称")]
+    [Header("需要切换的场景名称")]
     public string newSceneName;
 
     private void OnTriggerEnter2D(Collider2D other)
