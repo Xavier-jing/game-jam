@@ -14,7 +14,7 @@ public class PlayerClimbState : PlayerState
     {
         base.Enter();
         // 进入爬梯子：关闭重力，停止速度
-        //player.RB.gravityScale = 0f;
+        player.RB.gravityScale = 0f;
         player.RB.velocity = Vector2.zero;
     }
 
@@ -22,7 +22,7 @@ public class PlayerClimbState : PlayerState
     {
         base.Exit();
         // 恢复默认重力
-        //player.RB.gravityScale = player.gravityScale;
+        player.RB.gravityScale = player.gravityScale;
     }
 
     public override void LogicUpdate()
