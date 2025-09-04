@@ -53,7 +53,6 @@ public class SplitViewportController : MonoBehaviour, IDragHandler, IBeginDragHa
 
     void Reset()
     {
-        // 自动设置组件引用
         divider = GetComponent<RectTransform>();
         if (!canvas) canvas = GetComponentInParent<Canvas>();
     }

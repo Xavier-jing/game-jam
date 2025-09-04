@@ -28,6 +28,10 @@ public class Player : MonoBehaviour
 
     public Rigidbody2D RB { get; private set; }
 
+    public BoxCollider2D Collider2D { get; private set; }
+
+    public Collider2D otherCollider;
+
     public Vector2 CurrentVelocity { get; private set; }
     #endregion
 
@@ -71,6 +75,8 @@ public class Player : MonoBehaviour
         stateMachine.Initialize(IdleState);
 
         RB = GetComponent<Rigidbody2D>();
+
+        Collider2D = GetComponent<BoxCollider2D>();
 
         gravityScale = RB.gravityScale;
 
