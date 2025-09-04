@@ -52,9 +52,7 @@ public class PlacePointTrigger : MonoBehaviour
             TryPlaceItem();
             return;
         }
-
         Vector3 pos = dropOffset != null ? dropOffset.position : (transform.position + Vector3.right * 0.5f);
-
         inv.DropSelectedItem(pos);
     }
 

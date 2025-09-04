@@ -188,7 +188,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.12242985, y: 0.1836443}
+  m_Offset: {x: 0.08773899, y: 0.17102975}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -199,7 +199,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5815411, y: 1.3672886}
+  m_Size: {x: 1.9032156, y: 1.3925177}
   m_EdgeRadius: 0
 --- !u!114 &31651117
 MonoBehaviour:
@@ -2240,6 +2240,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClick
       objectReference: {fileID: 0}
+    - target: {fileID: 4518229802723330416, guid: 1525df5f3d56eb24cad2eb25e748ee3e, type: 3}
+      propertyPath: inventoryManager
+      value: 
+      objectReference: {fileID: 1985696002}
     - target: {fileID: 4537334895307717861, guid: 1525df5f3d56eb24cad2eb25e748ee3e, type: 3}
       propertyPath: inventoryManager
       value: 
@@ -2384,6 +2388,10 @@ PrefabInstance:
       propertyPath: inventoryManager
       value: 
       objectReference: {fileID: 1985696002}
+    - target: {fileID: 8022905108731648444, guid: 1525df5f3d56eb24cad2eb25e748ee3e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1350132238}
     - target: {fileID: 8814359513976363310, guid: 1525df5f3d56eb24cad2eb25e748ee3e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -28,6 +28,7 @@ public class PlacePointEvent : MonoBehaviour
                 Debug.Log("新物品出现");
             }
         }
+
         if (newItemSpawned && !newItemPicked && (newItem == null))
         {
             newItemPicked = true;
@@ -44,6 +45,4 @@ public class PlacePointEvent : MonoBehaviour
                 itemToDisappear.SetActive(false);
         }
     }
-
-
 }

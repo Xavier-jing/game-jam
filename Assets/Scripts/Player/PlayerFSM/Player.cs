@@ -161,6 +161,5 @@ public class Player : MonoBehaviour
             InputHandler.PlayerInput.enabled = false;
         }
     }
-
     #endregion
 }
