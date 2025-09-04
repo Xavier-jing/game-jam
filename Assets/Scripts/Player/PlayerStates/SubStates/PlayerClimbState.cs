@@ -19,7 +19,10 @@ public class PlayerClimbState : PlayerState
         player.RB.gravityScale = 0f;
         player.RB.velocity = Vector2.zero;
         //禁用对方碰撞体
-        Physics2D.IgnoreCollision(player.Collider2D, player.otherCollider, true);
+        foreach (var collider in player.otherColliders)
+        {
+            Physics2D.IgnoreCollision(player.Collider2D, collider, true);
+        }
     }
 
     public override void Exit()
@@ -28,7 +31,10 @@ public class PlayerClimbState : PlayerState
         // 恢复默认重力
         player.RB.gravityScale = player.gravityScale;
         //恢复对方碰撞体
-        Physics2D.IgnoreCollision(player.Collider2D, player.otherCollider, false);
+        foreach (var collider in player.otherColliders)
+        {
+            Physics2D.IgnoreCollision(player.Collider2D, collider, false);
+        }
     }
 
     public override void LogicUpdate()

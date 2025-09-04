@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
     public BoxCollider2D Collider2D { get; private set; }
 
-    public Collider2D otherCollider;
+    public List<Collider2D> otherColliders = new List<Collider2D>();
 
     public Vector2 CurrentVelocity { get; private set; }
     #endregion
